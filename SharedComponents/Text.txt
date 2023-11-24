@@ -1,0 +1,22 @@
+- SharedComponents
+  - EmailDataStructures
+    - Email.h
+      - Represents the basic structure of an email (sender, recipient, subject, content, timestamp, etc.).
+      - Contains methods for serialization/deserialization of email data.
+    - Attachment.h
+      - Represents an email attachment.
+      - Includes methods for handling attachments.
+
+  - ConfigurationSettings
+    - AppConfig.h
+      - Manages application-wide configuration settings.
+      - Includes methods for reading and writing configuration settings.
+      - Example settings: server information, user preferences.
+
+  - Constants.h
+    - Defines constants used throughout the application (e.g., port numbers, file paths).
+    - Centralizes such values to ensure consistency and ease of maintenance.
+
+  - UtilityFunctions.h
+    - Various utility functions that can be reused across the application.
+    - Examples include date/time formatting, string manipulation, etc.
