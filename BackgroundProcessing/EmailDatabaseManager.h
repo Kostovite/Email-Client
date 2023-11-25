@@ -1,25 +1,22 @@
 #pragma once
 
-// ConsoleApp/EmailDatabaseManager.h
-#pragma once
+#include "../ShareComponents/Email.h"
 
-#include "../SharedComponents/Email.h"
-
-#include <sqlite3.h>
+#include "sqlite/sqlite3.h"
 #include <vector>
+#include <string>
 
-using std::vector;
+using std::vector, std::string;
 
 class EmailDatabaseManager {
 private:
+    sqlite3* _database;
+    string _databasePath;
+    bool _executeQuery(const string& query);
+
 public:
     EmailDatabaseManager();
-    ~EmailDatabaseManager();
+	~EmailDatabaseManager();
 
-    // CRUD operations
-    bool addEmail(const Email& email);
-    bool updateEmail(const Email& email);
-    bool deleteEmail(int emailId);
-    Email getEmailById(int emailId);
-    std::vector<Email> getAllEmails();
+public:
 };
