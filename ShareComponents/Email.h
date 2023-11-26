@@ -1,5 +1,9 @@
 #pragma once
 
+//Include guards
+#ifndef EMAIL_H
+#define EMAIL_H
+
 #include <iostream>
 #include <string>
 
@@ -13,10 +17,11 @@ private:
     string _subject;
     string _content;
     string _timestamp;
+    string _type;
 
 public:
     Email();
-    Email(int id, const string& sender, const string& recipient, const string& subject, const string& content, const string& timestamp);
+    Email(int id, const string& sender, const string& recipient, const string& subject, const string& content, const string& timestamp, const string& type);
     ~Email();
 
 public:
@@ -26,6 +31,7 @@ public:
     const string& getSubject() const;
     const string& getContent() const;
     const string& getTimestamp() const;
+    const string& getType() const;
 
     void setId(int id);
     void setSender(const string& sender);
@@ -33,7 +39,10 @@ public:
     void setSubject(const string& subject);
     void setContent(const string& content);
     void setTimestamp(const string& timestamp);
+    void setType(const string& type);
 
 public:
-    string emailQuery() const;
+    //string emailQuery() const;
 };
+
+#endif // !EMAIL_H
