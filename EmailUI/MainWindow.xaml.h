@@ -2,6 +2,8 @@
 
 #include "MainWindow.g.h"
 
+using winrt::Microsoft::UI::Xaml::Controls::NavigationView, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs;
+
 namespace winrt::EmailUI::implementation
 {
     struct MainWindow : MainWindowT<MainWindow>
@@ -15,7 +17,7 @@ namespace winrt::EmailUI::implementation
         int32_t MyProperty();
         void MyProperty(int32_t value);
 
-        void myButton_Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
+        void MainWindow::NavigationView_ItemInvoked(NavigationView const& sender, NavigationViewItemInvokedEventArgs const& args);
     };
 }
 

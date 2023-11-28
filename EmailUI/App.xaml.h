@@ -1,6 +1,7 @@
 #pragma once
 
 #include "App.xaml.g.h"
+#include "Email.h"
 
 namespace winrt::EmailUI::implementation
 {

@@ -12,7 +12,7 @@ using std::vector, std::string;
 const string TABLE_NAMES[] = { "inbox", "sent", "drafts", "trash" };
 
 class EmailDatabaseManager {
-private:
+protected:
     sqlite3* _database;
     string _databasePath;
     bool _executeQuery(const string& query);

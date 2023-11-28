@@ -1,0 +1,11 @@
+import "Email.idl";
+
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass Page_User_Account_Mail : Microsoft.UI.Xaml.Controls.Page
+    {
+        Page_User_Account_Mail();
+        Windows.Foundation.Collections.IObservableVector<Email> Emails{ get; };
+    }
+}

@@ -5,6 +5,7 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
+    <Page Include="Page_User_Account_Mail.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -12,6 +13,9 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Email.cpp">
+      <Filter>View Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -43,6 +47,9 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{3c185488-75b8-4b5b-9e7b-4997c23f9fa8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="View Models">
+      <UniqueIdentifier>{091e735e-1fd2-4bef-b2f3-d8f254ba9ad3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -55,5 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\x64\Debug\BackgroundProcessing.lib" />
+    <Library Include="..\x64\Debug\ShareComponents.lib" />
   </ItemGroup>
 </Project>

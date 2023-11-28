@@ -1,0 +1,15 @@
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass Email : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        Email(Int32 id, String sender, String recipient, String subject, String content, String timestamp, String type);
+        Int32 getId();
+        String getSender();
+        String getRecipient();
+        String getSubject();
+        String getContent();
+		String getTimestamp();
+		String getType();
+    }
+}
