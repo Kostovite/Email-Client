@@ -2,6 +2,7 @@
 
 #include "App.xaml.g.h"
 #include "Email.h"
+#include "WinRT_EmailDatabaseManager.h"
 
 namespace winrt::EmailUI::implementation
 {

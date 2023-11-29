@@ -6,6 +6,8 @@
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
     <Page Include="Page_User_Account_Mail.xaml" />
+    <Page Include="Page_Console.xaml" />
+    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -14,6 +16,9 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Email.cpp">
+      <Filter>View Models</Filter>
+    </ClCompile>
+    <ClCompile Include="WinRT_EmailDatabaseManager.cpp">
       <Filter>View Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,12 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="..\x64\Debug\BackgroundProcessing.dll" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\x64\Debug\BackgroundProcessing.lib" />
     <Library Include="..\x64\Debug\ShareComponents.lib" />
+    <Library Include="..\x64\Debug\BackgroundProcessing.lib" />
   </ItemGroup>
 </Project>

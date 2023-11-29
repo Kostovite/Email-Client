@@ -47,5 +47,10 @@
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+    <Capability Name="codeGeneration"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="internetClient"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <uap:Capability Name="removableStorage"/>
   </Capabilities>
 </Package>

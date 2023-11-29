@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MainWindow.g.h"
+#include "../BackgroundProcessing/EmailDatabaseManager.h"
 
 using winrt::Microsoft::UI::Xaml::Controls::NavigationView, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs;
 
@@ -10,8 +11,7 @@ namespace winrt::EmailUI::implementation
     {
         MainWindow()
         {
-            // Xaml objects should not call InitializeComponent during construction.
-            // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
+            
         }
 
         int32_t MyProperty();

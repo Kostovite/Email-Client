@@ -1,0 +1,15 @@
+import "Email.idl";
+
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass WinRT_EmailDatabaseManager : Microsoft.UI.Xaml.Controls.Control
+    {
+        WinRT_EmailDatabaseManager();
+        Boolean initializeDatabase();
+        Boolean addEmailTo(Email email, String tableName);
+        Windows.Foundation.Collections.IObservableVector<Email> getEmailsFrom(String tableName);
+        void removeAllEmailsIn(String tableName);
+
+    }
+}

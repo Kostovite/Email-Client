@@ -15,9 +15,6 @@ namespace winrt::EmailUI::implementation
         Page_User_Account_Mail();
 
         Windows::Foundation::Collections::IObservableVector<EmailUI::Email> Emails();
-
-    public:
-        
     };
 }
 

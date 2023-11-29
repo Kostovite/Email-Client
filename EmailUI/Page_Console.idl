@@ -1,0 +1,9 @@
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass Page_Console : Microsoft.UI.Xaml.Controls.Page
+    {
+        Page_Console();
+        Int32 MyProperty;
+    }
+}

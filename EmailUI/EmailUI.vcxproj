@@ -111,6 +111,10 @@
       <DependentUpon>Email.cpp</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Page_Console.xaml.h">
+      <DependentUpon>Page_Console.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Page_User_Account_Mail.xaml.h">
       <DependentUpon>Page_User_Account_Mail.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -122,16 +126,28 @@
     <ClInclude Include="MainWindow.xaml.h">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="WinRT_EmailDatabaseManager.h">
+      <DependentUpon>WinRT_EmailDatabaseManager.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
     <Page Include="MainWindow.xaml" />
+    <Page Include="Page_Console.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Page_User_Account_Mail.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Email.cpp">
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Page_Console.xaml.cpp">
+      <DependentUpon>Page_Console.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Page_User_Account_Mail.xaml.cpp">
@@ -148,6 +164,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="WinRT_EmailDatabaseManager.cpp">
+      <SubType>Code</SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Email.idl">
@@ -158,8 +177,16 @@
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Midl>
+    <Midl Include="Page_Console.idl">
+      <DependentUpon>Page_Console.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="Page_User_Account_Mail.idl">
       <DependentUpon>Page_User_Account_Mail.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="WinRT_EmailDatabaseManager.idl">
+      <DependentUpon>WinRT_EmailDatabaseManager.cpp</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
   </ItemGroup>
@@ -186,6 +213,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\x64\Debug\BackgroundProcessing.dll" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

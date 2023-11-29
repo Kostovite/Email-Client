@@ -20,10 +20,7 @@ EmailDatabaseManager::EmailDatabaseManager()
     _databasePath = "EmailDatabase.db";
     int result = sqlite3_open(_databasePath.c_str(), &_database);
     if (result != SQLITE_OK) {
-        cout << "Error opening database: " << sqlite3_errmsg(_database) << endl;
-    }
-    else {
-        cout << "Database opened successfully" << endl;
+        throw sqlite3_errmsg(_database);
     }
 }
 

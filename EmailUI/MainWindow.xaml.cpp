@@ -5,6 +5,7 @@
 #endif
 
 #include "Page_User_Account_Mail.xaml.h"
+#include "Page_Console.xaml.h"
 
 #include <winrt/Windows.UI.Xaml.Interop.h>
 
@@ -71,6 +72,16 @@ namespace winrt::EmailUI::implementation
             if (currentPagetype != mailPage)
             {
 				ContentFrame().Navigate(mailPage, nullptr);
+			}
+		}
+
+        if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_Console")
+		{
+            auto currentPagetype = ContentFrame().CurrentSourcePageType();
+            auto consolePage = xaml_typename<EmailUI::Page_Console>();
+			if (currentPagetype != consolePage)
+			{
+				ContentFrame().Navigate(consolePage, nullptr);
 			}
 		}
     }
