@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EmailDatabaseManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sqlite\sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -26,11 +23,80 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EmailDatabaseManager.h">
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_crockford.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\x64\Debug\ShareComponents.lib" />
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_default_crockford.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_default_hex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_default_rfc4648.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_hex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base32_rfc4648.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_default_rfc4648.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_default_url.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_default_url_unpadded.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_rfc4648.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_url.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\base64_url_unpadded.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\data\access.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\data\raw_result_buffer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\base32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\base64.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\codec.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\config.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\hex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\detail\stream_codec.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\hex_default_lower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\hex_default_upper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\hex_lower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\hex_upper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcodec\cppcodec-master\cppcodec\parse_error.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

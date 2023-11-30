@@ -19,15 +19,24 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Margin="12,12,0,0">
-                    <TextBlock Text="SPLITVIEW PANE" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="EMAILS LIST" Style="{StaticResource BaseTextBlockStyle}"/>
                 </StackPanel>
-                <ListView Grid.Row="1" Margin="12,12,0,0" ItemsSource="{x:Bind Emails}">
+                <ListView Grid.Row="1" Margin="12,12,0,0" ItemsSource="{x:Bind Emails}" x:Name="table"
+                          IsItemClickEnabled="True" ItemClick="emailItemClick"
+                          >
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:Email">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{x:Bind getSender()}" Style="{StaticResource BaseTextBlockStyle}" />
+                                <TextBlock Text="{x:Bind getSender()}" Style="{StaticResource BaseTextBlockStyle}" FontSize="12" FontStyle="Italic"/>
                                 <TextBlock Text="{x:Bind getSubject()}" Style="{StaticResource BaseTextBlockStyle}" />
                             </StackPanel>
+                            <FlyoutBase.AttachedFlyout>
+                                <MenuFlyout>
+                                    <!-- Add menu items as needed -->
+                                    <MenuFlyoutItem Text="Delete" Icon="Delete"/>
+                                    <MenuFlyoutItem Text="Select"/>
+                                </MenuFlyout>
+                            </FlyoutBase.AttachedFlyout>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -40,8 +49,17 @@
                 <muxc:RowDefinition Height="Auto"/>
                 <muxc:RowDefinition Height="*"/>
             </muxc:Grid.RowDefinitions>
-            <muxc:TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-            <muxc:TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" />
+            <muxc:TextBlock Text="VIEW PANE" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+            <muxc:TextBlock x:Name="Subject" Grid.Row="1" Margin="12,12,0,0" FontSize="24" FontWeight="Bold"
+                            Style="{StaticResource BodyTextBlockStyle}" />
+            <muxc:TextBlock x:Name="Sender" Grid.Row="2" Margin="12,56,0,0"
+                            FontSize="18" FontStyle="Italic" FontWeight="Bold" Foreground="DarkGray"/>
+            <muxc:TextBlock x:Name="Recipient" Grid.Row="3" Margin="12,90,0,0" TextWrapping="Wrap"
+                Style="{StaticResource BodyTextBlockStyle}" />
+            <muxc:TextBlock x:Name="Timestamp" Grid.Row="4" Margin="12,110,0,0" TextWrapping="Wrap"
+                Style="{StaticResource BodyTextBlockStyle}" />
+            <muxc:TextBlock x:Name="Body" Grid.Row="5" Margin="12,130,0,0" TextWrapping="Wrap" />
+
         </muxc:Grid>
     </muxc:SplitView>
 </Page>

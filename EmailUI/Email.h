@@ -10,6 +10,7 @@ namespace winrt::EmailUI::implementation
         int32_t _id{};
         hstring _sender;
         hstring _recipient;
+        hstring _bcc;
         hstring _subject;
         hstring _content;
         hstring _timestamp;
@@ -19,7 +20,7 @@ namespace winrt::EmailUI::implementation
 
     public:
         Email() = default;
-        Email(int32_t id, hstring sender, hstring recipient, hstring subject, hstring content, hstring timestamp, hstring type);
+        Email(int32_t id, hstring sender, hstring recipient, hstring bcc, hstring subject, hstring content, hstring timestamp, hstring type);
 
         event_token PropertyChanged(Microsoft::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
         void PropertyChanged(event_token const& token) noexcept;
@@ -28,6 +29,7 @@ namespace winrt::EmailUI::implementation
         int32_t getId();
 		hstring getSender();
         hstring getRecipient();
+        hstring getBcc();
         hstring getSubject();
         hstring getContent();
         hstring getTimestamp();
@@ -36,13 +38,11 @@ namespace winrt::EmailUI::implementation
         void setId(int32_t value);
         void setSender(hstring value);
         void setRecipient(hstring value);
+        void setBcc(hstring value);
 		void setSubject(hstring value);
         void setContent(hstring value);
 		void setTimestamp(hstring value);
         void setType(hstring value);
-
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
     };
 }
 

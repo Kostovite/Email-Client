@@ -1,0 +1,9 @@
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass Page_Compose : Microsoft.UI.Xaml.Controls.Page
+    {
+        Page_Compose();
+
+    }
+}

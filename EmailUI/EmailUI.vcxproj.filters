@@ -8,6 +8,7 @@
     <Page Include="Page_User_Account_Mail.xaml" />
     <Page Include="Page_Console.xaml" />
     <Page Include="Themes\Generic.xaml" />
+    <Page Include="Page_Compose.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -16,10 +17,13 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Email.cpp">
-      <Filter>View Models</Filter>
+      <Filter>Dependancy</Filter>
     </ClCompile>
     <ClCompile Include="WinRT_EmailDatabaseManager.cpp">
-      <Filter>View Models</Filter>
+      <Filter>Dependancy</Filter>
+    </ClCompile>
+    <ClCompile Include="Attachment.cpp">
+      <Filter>Dependancy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +56,7 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{3c185488-75b8-4b5b-9e7b-4997c23f9fa8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="View Models">
+    <Filter Include="Dependancy">
       <UniqueIdentifier>{091e735e-1fd2-4bef-b2f3-d8f254ba9ad3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -67,7 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\x64\Debug\BackgroundProcessing.dll" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />

@@ -39,19 +39,21 @@ namespace winrt::EmailUI::implementation
         {
             auto currentPagetype = ContentFrame().CurrentSourcePageType();
             auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+
             if (currentPagetype != mailPage)
             {
-				ContentFrame().Navigate(mailPage, nullptr);
+                ContentFrame().Navigate(mailPage, box_value(L"inbox"));
 			}
         }
 
         if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_User_Account_Sent")
         {
-			auto currentPagetype = ContentFrame().CurrentSourcePageType();
-			auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+            auto currentPagetype = ContentFrame().CurrentSourcePageType();
+            auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+
             if (currentPagetype != mailPage)
             {
-                ContentFrame().Navigate(mailPage, nullptr);
+                ContentFrame().Navigate(mailPage, box_value(L"sent"));
             }
         }
 
@@ -59,20 +61,22 @@ namespace winrt::EmailUI::implementation
         {
             auto currentPagetype = ContentFrame().CurrentSourcePageType();
             auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+
             if (currentPagetype != mailPage)
             {
-                ContentFrame().Navigate(mailPage, nullptr);
+                ContentFrame().Navigate(mailPage, box_value(L"drafts"));
             }
         }
 
         if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_User_Account_Trash")
         {
-			auto currentPagetype = ContentFrame().CurrentSourcePageType();
-			auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+            auto currentPagetype = ContentFrame().CurrentSourcePageType();
+            auto mailPage = xaml_typename<EmailUI::Page_User_Account_Mail>();
+
             if (currentPagetype != mailPage)
             {
-				ContentFrame().Navigate(mailPage, nullptr);
-			}
+                ContentFrame().Navigate(mailPage, box_value(L"trash"));
+            }
 		}
 
         if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_Console")
@@ -84,5 +88,15 @@ namespace winrt::EmailUI::implementation
 				ContentFrame().Navigate(consolePage, nullptr);
 			}
 		}
+
+        if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_Compose")
+        {
+             auto currentPagetype = ContentFrame().CurrentSourcePageType();
+             auto composePage = xaml_typename<EmailUI::Page_Compose>();
+             if (currentPagetype != composePage)
+             {
+				 ContentFrame().Navigate(composePage, nullptr);
+			 }
+        }
     }
 }

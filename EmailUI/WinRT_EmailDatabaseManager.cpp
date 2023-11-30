@@ -38,6 +38,8 @@ namespace winrt::EmailUI::implementation
         if (result != SQLITE_OK) {
             //For later throw
         }
+
+        initializeDatabase();
     }
 
     WinRT_EmailDatabaseManager::~WinRT_EmailDatabaseManager()
@@ -49,7 +51,7 @@ namespace winrt::EmailUI::implementation
     {
         //Initialize the database with given table array
         for (int i = 0; i < sizeof(TABLE_NAMES) / sizeof(TABLE_NAMES[0]); i++) {
-            hstring query = L"CREATE TABLE IF NOT EXISTS " + TABLE_NAMES[i] + L" (id INTEGER PRIMARY KEY AUTOINCREMENT, sender TEXT NOT NULL, recipient TEXT NOT NULL, subject TEXT NOT NULL, content TEXT NOT NULL, timestamp TEXT NOT NULL, type TEXT NOT NULL);";
+            hstring query = L"CREATE TABLE IF NOT EXISTS " + TABLE_NAMES[i] + L" (id INTEGER PRIMARY KEY AUTOINCREMENT, sender TEXT NOT NULL, recipient TEXT NOT NULL, bcc TEXT NOT NULL, subject TEXT NOT NULL, content TEXT NOT NULL, timestamp TEXT NOT NULL, type TEXT NOT NULL);";
             if (!_executeQuery(query)) {
                 return false;
             }
@@ -59,7 +61,7 @@ namespace winrt::EmailUI::implementation
 
     bool WinRT_EmailDatabaseManager::addEmailTo(const EmailUI::Email& email, const hstring& tableName)
     {
-		hstring query = L"INSERT INTO " + tableName + L" (sender, recipient, subject, content, timestamp, type) VALUES ('" + email.getSender() + L"', '" + email.getRecipient() + L"', '" + email.getSubject() + L"', '" + email.getContent() + L"', '" + email.getTimestamp() + L"', '" + email.getType() + L"');";
+        hstring query = L"INSERT INTO " + tableName + L" (sender, recipient, bcc, subject, content, timestamp, type) VALUES ('" + email.getSender() + L"', '" + email.getRecipient() + L"', '" + email.getBcc() + L"', '" + email.getSubject() + L"', '" + email.getContent() + L"', '" + email.getTimestamp() + L"', '" + email.getType() + L"');";
 		return _executeQuery(query);
 	}
 
@@ -77,13 +79,15 @@ namespace winrt::EmailUI::implementation
 				int id = sqlite3_column_int(statement, 0);
 				hstring sender = to_hstring((const char*)sqlite3_column_text(statement, 1));
                 hstring recipient = to_hstring((const char*)sqlite3_column_text(statement, 2));
-                hstring subject = to_hstring((const char*)sqlite3_column_text(statement, 3));
-                hstring content = to_hstring((const char*)sqlite3_column_text(statement, 4));
-                hstring timestamp = to_hstring((const char*)sqlite3_column_text(statement, 5));
-                hstring type = to_hstring((const char*)sqlite3_column_text(statement, 6));
+                hstring bcc = to_hstring((const char*)sqlite3_column_text(statement, 3));
+                hstring subject = to_hstring((const char*)sqlite3_column_text(statement, 4));
+                hstring content = to_hstring((const char*)sqlite3_column_text(statement, 5));
+                hstring timestamp = to_hstring((const char*)sqlite3_column_text(statement, 6));
+                hstring type = to_hstring((const char*)sqlite3_column_text(statement, 7));
                 EmailUI::Email email{
 					id,
 					sender,
+                    bcc,
 					recipient,
 					subject,
 					content,
@@ -105,7 +109,7 @@ namespace winrt::EmailUI::implementation
 
     bool WinRT_EmailDatabaseManager::moveEmailBetween(const EmailUI::Email& email, const hstring& fromTableName, const hstring& toTableName)
     {
-        hstring query = L"INSERT INTO " + toTableName + L" (sender, recipient, subject, content, timestamp, type) VALUES ('" + email.getSender() + L"', '" + email.getRecipient() + L"', '" + email.getSubject() + L"', '" + email.getContent() + L"', '" + email.getTimestamp() + L"', '" + email.getType() + L"";
+        hstring query = L"INSERT INTO " + toTableName + L" (sender, recipient, bcc, subject, content, timestamp, type) VALUES ('" + email.getSender() + L"', '" + email.getRecipient() + L"', '" + email.getBcc() + L"', '" + email.getSubject() + L"', '" + email.getContent() + L"', '" + email.getTimestamp() + L"', '" + email.getType() + L"";
     	//Delete the email from the original table
         query = query + L"DELETE FROM " + fromTableName + L" WHERE id = " + to_hstring(email.getId()) + L";";
         
@@ -113,7 +117,7 @@ namespace winrt::EmailUI::implementation
     }
     bool WinRT_EmailDatabaseManager::moveAllToTrash(const hstring& fromTableName)
     {
-        hstring query = L"INSERT INTO trash (sender, recipient, subject, content, timestamp, type) SELECT sender, recipient, subject, content, timestamp, type FROM " + fromTableName + L";";
+        hstring query = L"INSERT INTO trash (sender, recipient, bcc, subject, content, timestamp, type) SELECT sender, recipient, bcc, subject, content, timestamp, type FROM " + fromTableName + L";";
 		//Delete the email from the original table
 		query = query + L"DELETE FROM " + fromTableName + L";";
 

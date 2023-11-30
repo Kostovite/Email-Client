@@ -3,15 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:EmailUI">
 
-    <Style TargetType="local:WinRT_EmailDatabaseManager" >
+    <Style TargetType="local:WinRT_EmailDatabaseManager">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:WinRT_EmailDatabaseManager">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
+                        BorderThickness="{TemplateBinding BorderThickness}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

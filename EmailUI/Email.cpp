@@ -12,21 +12,13 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::EmailUI::implementation
 {
-    int32_t Email::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
 
-    void Email::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
-
-    Email::Email(int32_t id, hstring sender, hstring recipient, hstring subject, hstring content, hstring timestamp, hstring type)
+    Email::Email(int32_t id, hstring sender, hstring recipient, hstring bcc, hstring subject, hstring content, hstring timestamp, hstring type)
     {
         this->_id = id;
 		this->_sender = sender;
 		this->_recipient = recipient;
+		this->_bcc = bcc;
 		this->_subject = subject;
 		this->_content = content;
 		this->_timestamp = timestamp;
@@ -56,6 +48,11 @@ hstring Email::getSender()
 	hstring Email::getRecipient()
 	{
 		return this->_recipient;
+	}
+
+	hstring Email::getBcc()
+	{
+		return this->_bcc;
 	}
 
 	hstring Email::getSubject()
@@ -102,6 +99,15 @@ hstring Email::getSender()
 		{
 			this->_recipient = recipient;
 			_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"recipient" });
+		}
+	}
+
+	void Email::setBcc(hstring bcc)
+	{
+		if (this->_bcc != bcc)
+		{
+			this->_bcc = bcc;
+			_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"bcc" });
 		}
 	}
 

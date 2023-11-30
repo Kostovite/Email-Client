@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MainWindow.g.h"
-#include "../BackgroundProcessing/EmailDatabaseManager.h"
 
 using winrt::Microsoft::UI::Xaml::Controls::NavigationView, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs;
 
