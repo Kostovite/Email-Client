@@ -2,7 +2,7 @@
 
 #include "WinRT_EmailDatabaseManager.g.h"
 
-#include "../Components/sqlite/sqlite3.h"
+#include "../BackgroundProcessing/sqlite/sqlite3.h"
 
 namespace winrt::EmailUI::implementation
 {

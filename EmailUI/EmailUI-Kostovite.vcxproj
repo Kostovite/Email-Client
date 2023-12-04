@@ -263,12 +263,11 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\x64\Debug\SideloadBackend.dll" />
+    <None Include="..\x64\Debug\Socket.dll" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\x64\Debug\Components.lib" />
-    <Library Include="..\x64\Debug\SideloadBackend.lib" />
+    <Library Include="..\x64\Debug\BackgroundProcessing.lib" />
   </ItemGroup>
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution

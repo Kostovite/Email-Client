@@ -13,7 +13,7 @@ using namespace Microsoft::UI::Xaml;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 //Define a sample sender
-hstring sender = L"nguyenvana@tester.com";
+hstring sender = L"nguyenvana@gmail.com";
 
 namespace winrt::EmailUI::implementation
 {
@@ -40,9 +40,5 @@ namespace winrt::EmailUI::implementation
 		sendButton().Content(box_value(L"Sended"));
 		EmailUI::WinRT_EmailDatabaseManager emailDatabase;
 		emailDatabase.addEmailTo(composeEmail(), L"sent");
-
-		//Send email to server using SMTP
-		
-
 	}
 }

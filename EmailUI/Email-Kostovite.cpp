@@ -146,18 +146,4 @@ hstring Email::getSender()
 			_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"type" });
 		}
 	}
-
-	Windows::Foundation::Collections::IVector<EmailUI::Attachment> Email::getAttachments()
-	{
-		return this->_attachments;
-	}
-
-	void Email::setAttachment(EmailUI::Attachment const& attachment)
-	{
-		this->_attachments.Append(attachment);
-		_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"attachments" });
-	}
-
-	
-	
 }

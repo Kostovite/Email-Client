@@ -15,7 +15,6 @@ namespace winrt::EmailUI::implementation
         hstring _content;
         hstring _timestamp;
         hstring _type;
-        Windows::Foundation::Collections::IVector<EmailUI::Attachment> _attachments;
 
         winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> _propertyChanged;
 
@@ -44,9 +43,6 @@ namespace winrt::EmailUI::implementation
         void setContent(hstring value);
 		void setTimestamp(hstring value);
         void setType(hstring value);
-
-        Windows::Foundation::Collections::IVector <EmailUI::Attachment> getAttachments();
-        void setAttachment(EmailUI::Attachment const& attachment);
     };
 }
 

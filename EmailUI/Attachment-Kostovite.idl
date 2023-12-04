@@ -4,8 +4,6 @@ namespace EmailUI
     runtimeclass Attachment : Microsoft.UI.Xaml.Controls.Control
     {
         Attachment();
-        String FileName();
-        String FileType();
-        String Base64Data();
+        Int32 MyProperty;
     }
 }

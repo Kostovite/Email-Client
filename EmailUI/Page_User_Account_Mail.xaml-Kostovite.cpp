@@ -4,6 +4,7 @@
 #include "Page_User_Account_Mail.g.cpp"
 #endif
 
+#include "../BackgroundProcessing/sqlite/sqlite3.h"
 #include "WinRT_EmailDatabaseManager.h" 
 
 #include <winrt/Windows.Storage.h>

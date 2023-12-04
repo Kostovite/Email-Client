@@ -1,5 +1,3 @@
-import "Attachment.idl";
-
 namespace EmailUI
 {
     [default_interface]
@@ -14,6 +12,5 @@ namespace EmailUI
         String getContent();
 		String getTimestamp();
 		String getType();
-        Windows.Foundation.Collections.IVector <Attachment> getAttachments();
     }
 }

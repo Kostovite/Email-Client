@@ -71,13 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\x64\Debug\SideloadBackend.dll" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\x64\Debug\Components.lib" />
-    <Library Include="..\x64\Debug\SideloadBackend.lib" />
+    <Library Include="..\x64\Debug\ShareComponents.lib" />
+    <Library Include="..\x64\Debug\BackgroundProcessing.lib" />
   </ItemGroup>
 </Project>

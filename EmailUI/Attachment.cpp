@@ -4,8 +4,6 @@
 #include "Attachment.g.cpp"
 #endif
 
-#include "../BackgroundProcessing/cppcodec/base64_default_rfc4648.hpp"
-
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
@@ -14,17 +12,34 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::EmailUI::implementation
 {
-    Attachment::Attachment()
+    hstring Attachment::FileName()
     {
+        return _fileName;
     }
 
-    int32_t Attachment::MyProperty()
-    {
-        throw hresult_not_implemented();
-    }
+	hstring Attachment::FileType()
+	{
+		return _fileType;
+	}
 
-    void Attachment::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
+    hstring Attachment::Base64Data()
+	{
+		return _base64Data;
+	}
+
+	void Attachment::FileName(hstring const& value)
+	{
+		_fileName = value;
+	}
+
+	void Attachment::FileType(hstring const& value)
+	{
+		_fileType = value;
+	}
+
+	void Attachment::Base64Data(hstring const& value)
+	{
+		_base64Data = value;
+	}
+	
 }

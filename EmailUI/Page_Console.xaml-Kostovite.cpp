@@ -28,7 +28,8 @@ namespace winrt::EmailUI::implementation
     void Page_Console::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
-        SMTP_Client smtp;
 
+        ::SMTP_Client client;
+        client.ConnectToServer("192.168.1.174", 3333);
     }
 }
