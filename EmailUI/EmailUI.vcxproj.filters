@@ -5,10 +5,19 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
-    <Page Include="Page_User_Account_Mail.xaml" />
-    <Page Include="Page_Console.xaml" />
     <Page Include="Themes\Generic.xaml" />
-    <Page Include="Page_Compose.xaml" />
+    <Page Include="Page_Compose.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="Page_Console.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="Page_User_Account_Mail.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="Page_Setting.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -59,6 +68,9 @@
     <Filter Include="Dependancy">
       <UniqueIdentifier>{091e735e-1fd2-4bef-b2f3-d8f254ba9ad3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pages">
+      <UniqueIdentifier>{ee80e11b-b2d9-4244-b0a4-0a3a7457ae64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -71,13 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\x64\Debug\SideloadBackend.dll" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\x64\Debug\Components.lib" />
-    <Library Include="..\x64\Debug\SideloadBackend.lib" />
+    <Library Include="..\x64\Debug\Socket.lib" />
   </ItemGroup>
 </Project>

@@ -2,19 +2,31 @@
 
 #include "Page_Compose.g.h"
 
+#include <winrt/Windows.Foundation.h>
+#include <winrt/Windows.UI.Xaml.Controls.h>
+#include <winrt/Windows.UI.Xaml.Navigation.h>
+#include <winrt/Windows.UI.Text.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Windows::UI::Text;
+
+using Windows::Foundation::IInspectable;
+using Microsoft::UI::Xaml::RoutedEventArgs;
+using Windows::UI::Xaml::Navigation::NavigationEventArgs;
+
 namespace winrt::EmailUI::implementation
 {
     struct Page_Compose : Page_ComposeT<Page_Compose>
     {
-        Page_Compose()
-        {
-            // Xaml objects should not call InitializeComponent during construction.
-            // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
+    public:
+        Page_Compose() {
+
         }
 
         EmailUI::Email composeEmail();
 
-        //OnSendClick button
+        void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         void OnSendClick(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
     };
 }

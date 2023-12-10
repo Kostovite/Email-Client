@@ -4,15 +4,6 @@
 #include "Page_User_Account_Mail.g.cpp"
 #endif
 
-#include "WinRT_EmailDatabaseManager.h" 
-
-#include <winrt/Windows.Storage.h>
-#include <winrt/Windows.UI.Xaml.Navigation.h>
-
-using namespace winrt;
-using namespace Microsoft::UI::Xaml;
-using Windows::Foundation::Collections::IObservableVector;
-
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -33,22 +24,36 @@ namespace winrt::EmailUI::implementation
         //Get the box_value from the navigation parameter
         auto tableName = unbox_value<hstring>(e.Parameter());
 
-        //Get the emails from the database
-        _emails = single_threaded_observable_vector<EmailUI::Email>();
-
-        //EmailUI::Email sampleEmail{
-        //    1,
-        //    /* sender */ L"john.doe@example.com",
-        //    /* recipient */ L"jane.smith@example.com",
-        //    /* subject */ L"Sample Subject",
-        //    /* content */ L"Sample Content",
-        //    /* timestamp */ L"2023-11-27 10:30:00",
-        //    /* type */ L"inbox"
-        //};
-        //_emails.Append(sampleEmail);
-
         EmailUI::WinRT_EmailDatabaseManager emailDatabaseManager;
         emailDatabaseManager.initializeDatabase();
+
+        //Check if the tableName is inbox
+        if (tableName == L"inbox") {
+            //Using POP3 to push emails from the server to the database
+            POP3_Client pop3Client("192.168.1.174", 1100, USER, PASSWORD);
+            std::vector<std::string> sender, recipient, subject, content;
+            auto [success, message] = pop3Client.receiveEmail(sender, recipient, subject, content);
+
+            if (success) {
+                for (int i = 0; i < sender.size(); i++) {
+                    EmailUI::Email email(
+                        int32_t(i),
+                        to_hstring(sender[i]),
+                        to_hstring(recipient[i]),
+                        L"",
+                        to_hstring(subject[i]),
+                        to_hstring(content[i]),
+                        L"",
+                        L"inbox"
+                    );
+
+					emailDatabaseManager.addEmailTo(email, tableName);
+				}
+			}
+		}
+
+        //Get the emails from the database
+        _emails = single_threaded_observable_vector<EmailUI::Email>();
 
         //Get the emails from the database
         IObservableVector<EmailUI::Email> inboxEmails = emailDatabaseManager.getEmailsFrom(tableName);
@@ -57,6 +62,7 @@ namespace winrt::EmailUI::implementation
             _emails.Append(email);
         }
     }
+
     void Page_User_Account_Mail::emailItemClick(IInspectable const&, ItemClickEventArgs const&)
     {
         table().ItemClick([this](auto&& sender, auto&& args)
@@ -65,19 +71,16 @@ namespace winrt::EmailUI::implementation
                 {
                     //Update the content TextBlock in the VIEW PANE with details from the clicked Email
                     Subject().Text(clickedItem.getSubject());
+
                     Sender().Text(L"From: " + clickedItem.getSender());
 
                     hstring recipient = L"To: " + clickedItem.getRecipient();
-                    if (recipient.size() > 0) {
-                        recipient = recipient + L", " + clickedItem.getBcc();
-					}
-                    else {
-						recipient = recipient + clickedItem.getBcc();
-					}
+                    recipient = recipient + clickedItem.getBcc();
                     Recipient().Text(recipient);
                     
                     Timestamp().Text(clickedItem.getTimestamp());
-                    Body().Text(clickedItem.getContent());
+
+                    Body().Document().SetText(static_cast<Microsoft::UI::Text::TextSetOptions>(Microsoft::UI::Text::TextSetOptions::FormatRtf), clickedItem.getContent());
                 }
             });
     }

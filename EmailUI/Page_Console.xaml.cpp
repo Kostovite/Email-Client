@@ -5,7 +5,6 @@
 #endif
 
 #include <winrt/Windows.Storage.h>
-#include "SMTP_Client.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -28,7 +27,5 @@ namespace winrt::EmailUI::implementation
     void Page_Console::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
-        SMTP_Client smtp;
-
     }
 }

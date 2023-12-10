@@ -4,9 +4,6 @@
 #include "MainWindow.g.cpp"
 #endif
 
-#include "Page_User_Account_Mail.xaml.h"
-#include "Page_Console.xaml.h"
-
 #include <winrt/Windows.UI.Xaml.Interop.h>
 
 using namespace winrt;
@@ -30,10 +27,10 @@ namespace winrt::EmailUI::implementation
 
     void MainWindow::NavigationView_ItemInvoked(NavigationView const& sender, NavigationViewItemInvokedEventArgs const& args)
     {
-        //if (args.IsSettingsInvoked())
-        //{
-        //    //ContentFrame().Navigate(xaml_typename<Email::Page_Settings>(), nullptr);
-        //}
+        if (args.IsSettingsInvoked())
+        {
+            ContentFrame().Navigate(xaml_typename<EmailUI::Page_Setting>(), nullptr);
+        }
 
         if (args.InvokedItemContainer().Tag().as<winrt::hstring>() == L"Email.Page_User_Account_Inbox")
         {

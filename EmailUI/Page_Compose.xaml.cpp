@@ -5,15 +5,20 @@
 #endif
 
 #include <ctime>
+#include "SMTP_Client.h"
+
+#include <winrt/Windows.UI.Xaml.Documents.h>
+#include <winrt/Microsoft.UI.Text.h>
 
 using namespace winrt;
-using namespace Microsoft::UI::Xaml;
+using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Documents;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 //Define a sample sender
-hstring sender = L"nguyenvana@tester.com";
+hstring sender = L"minhhieudo2545@gmal.com";
 
 namespace winrt::EmailUI::implementation
 {
@@ -22,7 +27,10 @@ namespace winrt::EmailUI::implementation
 		hstring cc = ccTextBox().Text();
 		hstring bcc = bccTextBox().Text();
 		hstring subject = subjectTextBox().Text();
-		hstring body = bodyTextBox().Text();
+
+		hstring body;
+		bodyTextBox().Document().GetText(static_cast<winrt::Microsoft::UI::Text::TextGetOptions>(TextGetOptions::FormatRtf), body);
+
 		//Timestamp format: dd/mm/yyyy hh:mm:ss
 		time_t now = time(0);
 		tm* ltm = new tm;
@@ -35,6 +43,11 @@ namespace winrt::EmailUI::implementation
 		return composed;
 	}
 
+	void Page_Compose::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+	{
+		SMTP_Client client("192.168.1.174", 2500);
+	}
+
 	void Page_Compose::OnSendClick(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args)
 	{
 		sendButton().Content(box_value(L"Sended"));
@@ -42,7 +55,11 @@ namespace winrt::EmailUI::implementation
 		emailDatabase.addEmailTo(composeEmail(), L"sent");
 
 		//Send email to server using SMTP
+
+		//Call sendEmail() from SMTP_Client Page_Compose::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+		SMTP_Client client("192.168.1.174", 2500);
 		
+		client.sendEmail(to_string(composeEmail().getSender()), to_string(composeEmail().getRecipient()), to_string(composeEmail().getBcc()), to_string(composeEmail().getSubject()), to_string(composeEmail().getContent().c_str()));
 
 	}
 }

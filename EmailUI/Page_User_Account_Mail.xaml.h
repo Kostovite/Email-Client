@@ -2,11 +2,22 @@
 
 #include "Page_User_Account_Mail.g.h"
 #include "Email.h"
+#include "WinRT_EmailDatabaseManager.h"
+#include "POP3_Client.h"
+#include "rtf_Mime.h"
 
 #include <winrt/Windows.UI.Xaml.Navigation.h>
+#include <winrt/Windows.Storage.h>
+#include <winrt/Windows.UI.Xaml.Documents.h>
+#include <winrt/Microsoft.UI.Text.h>
+#include <winrt/Windows.Foundation.Collections.h>
+#include <winrt/Windows.UI.Xaml.Controls.h>
 
 using namespace winrt;
 using winrt::Windows::Foundation::IInspectable, winrt::Microsoft::UI::Xaml::Controls::ItemClickEventArgs;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::UI::Xaml::Documents;
+using Windows::Foundation::Collections::IObservableVector;
 
 namespace winrt::EmailUI::implementation
 {

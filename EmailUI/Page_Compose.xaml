@@ -34,7 +34,7 @@
             <TextBlock Text="Subject:" Grid.Row="2" Grid.Column="0" Margin="15,15,0,0"/>
             <TextBox x:Name="subjectTextBox" Grid.Row="2" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <TextBlock Text="Body:" Grid.Row="3" Grid.Column="0" Margin="15,15,0,0"/>
-            <TextBox x:Name="bodyTextBox" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <RichEditBox x:Name="bodyTextBox" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
     </Grid>
 </Page>
