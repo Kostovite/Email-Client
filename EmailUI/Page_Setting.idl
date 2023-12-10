@@ -1,0 +1,9 @@
+namespace EmailUI
+{
+    [default_interface]
+    runtimeclass Page_Setting : Microsoft.UI.Xaml.Controls.Page
+    {
+        Page_Setting();
+        Int32 MyProperty;
+    }
+}

@@ -1,9 +1,0 @@
-namespace EmailUI
-{
-    [default_interface]
-    runtimeclass Attachment : Microsoft.UI.Xaml.Controls.Control
-    {
-        Attachment();
-        Int32 MyProperty;
-    }
-}

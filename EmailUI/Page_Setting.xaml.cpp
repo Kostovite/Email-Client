@@ -1,11 +1,8 @@
 #include "pch.h"
-#include "Page_Console.xaml.h"
-#if __has_include("Page_Console.g.cpp")
-#include "Page_Console.g.cpp"
+#include "Page_Setting.xaml.h"
+#if __has_include("Page_Setting.g.cpp")
+#include "Page_Setting.g.cpp"
 #endif
-
-#include <winrt/Windows.Storage.h>
-#include "SMTP_Client.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -15,21 +12,18 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::EmailUI::implementation
 {
-    int32_t Page_Console::MyProperty()
+    int32_t Page_Setting::MyProperty()
     {
         throw hresult_not_implemented();
     }
 
-    void Page_Console::MyProperty(int32_t /* value */)
+    void Page_Setting::MyProperty(int32_t /* value */)
     {
         throw hresult_not_implemented();
     }
 
-    void Page_Console::myButton_Click(IInspectable const&, RoutedEventArgs const&)
+    void Page_Setting::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
         myButton().Content(box_value(L"Clicked"));
-
-        ::SMTP_Client client;
-        client.ConnectToServer("192.168.1.174", 3333);
     }
 }
