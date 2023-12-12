@@ -18,7 +18,7 @@ using namespace Windows::UI::Xaml::Documents;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 //Define a sample sender
-hstring sender = L"minhhieudo2545@gmal.com";
+hstring sender = L"minhhieudo2545@gmail.com";
 
 namespace winrt::EmailUI::implementation
 {
