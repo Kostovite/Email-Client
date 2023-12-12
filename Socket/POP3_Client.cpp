@@ -58,7 +58,7 @@ std::string POP3_Client::extractHeaderValue(const std::string& emailContent, con
 std::string POP3_Client::extractMimeContent(const std::string& emailContent) {
     size_t start = emailContent.find("\r\n\r\n") + 4;  // Start of MIME content
     return emailContent.substr(start);
-}
+    }
 
 std::tuple<bool, std::string> POP3_Client::receiveEmail(std::vector<std::string>& sender, std::vector<std::string>& recipient, std::vector<std::string>& subject, std::vector<std::string>& content)
 {
@@ -71,15 +71,15 @@ std::tuple<bool, std::string> POP3_Client::receiveEmail(std::vector<std::string>
     command = "CAPA\r\n";
     sendResult = send(_socket, command.c_str(), command.size(), 0);
     if (sendResult == SOCKET_ERROR) {
-        return std::make_tuple(false, "Can't send CAPA command");
-    }
+		return std::make_tuple(false, "Can't send CAPA command");
+	}
 
     // Receive response for CAPA command
     ZeroMemory(buf, sizeof(buf));
     bytesReceived = recv(_socket, buf, sizeof(buf), 0);
     if (bytesReceived == SOCKET_ERROR) {
-        return std::make_tuple(false, "Error receiving response for CAPA command");
-    }
+		return std::make_tuple(false, "Error receiving response for CAPA command");
+	}
 
     // Send USER command
     command = "USER " + _username + "\r\n";
@@ -104,8 +104,8 @@ std::tuple<bool, std::string> POP3_Client::receiveEmail(std::vector<std::string>
     command = "PASS " + _password + "\r\n";
     sendResult = send(_socket, command.c_str(), command.size(), 0);
     if (sendResult == SOCKET_ERROR) {
-        return std::make_tuple(false, "Can't send PASS command");
-    }
+		return std::make_tuple(false, "Can't send PASS command");
+	}
 
     // Receive response for PASS command
     ZeroMemory(buf, sizeof(buf));
@@ -124,20 +124,20 @@ std::tuple<bool, std::string> POP3_Client::receiveEmail(std::vector<std::string>
     sendResult = send(_socket, command.c_str(), command.size(), 0);
     if (sendResult == SOCKET_ERROR) {
         return std::make_tuple(false, "Can't send STAT command");
-    }
+	}
 
     // Receive response for STAT command
     ZeroMemory(buf, sizeof(buf));
     bytesReceived = recv(_socket, buf, sizeof(buf), 0);
     if (bytesReceived == SOCKET_ERROR) {
         return std::make_tuple(false, "Error receiving response for STAT command");
-    }
+	}
 
     // Check if STAT command was successful (response should start with +OK)
     if (strncmp(buf, "+OK", 3) != 0) {
         return std::make_tuple(false, "STAT command failed");
     }
-
+    
     std::tuple<int32_t, int32_t> emailStat;
     //Get the number of emails on the server with format "+OK %d %d"
     sscanf_s(buf, "+OK %d %d", &std::get<0>(emailStat), &std::get<1>(emailStat));
@@ -175,17 +175,17 @@ std::tuple<bool, std::string> POP3_Client::receiveEmail(std::vector<std::string>
 
         //Send RETR command
         command = "RETR " + std::to_string(std::get<0>(emailList[i])) + "\r\n";
-        sendResult = send(_socket, command.c_str(), command.size(), 0);
-        if (sendResult == SOCKET_ERROR) {
-            return std::make_tuple(false, "Can't send RETR command");
-        }
+    sendResult = send(_socket, command.c_str(), command.size(), 0);
+    if (sendResult == SOCKET_ERROR) {
+        return std::make_tuple(false, "Can't send RETR command");
+    }
 
-        // Receive response for RETR command
-        ZeroMemory(buf, sizeof(buf));
-        bytesReceived = recv(_socket, buf, sizeof(buf), 0);
-        if (bytesReceived == SOCKET_ERROR) {
-            return std::make_tuple(false, "Error receiving response for RETR command");
-        }
+    // Receive response for RETR command
+    ZeroMemory(buf, sizeof(buf));
+    bytesReceived = recv(_socket, buf, sizeof(buf), 0);
+    if (bytesReceived == SOCKET_ERROR) {
+		return std::make_tuple(false, "Error receiving response for RETR command");
+	}
 
         //Buf format
         //+OK %d
